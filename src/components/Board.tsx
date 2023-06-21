@@ -31,6 +31,9 @@ const Board = () => {
   };
 
   const handleMove = (i: number): void => {
+    if (squares[i] !== "") {
+        return;
+    }
     squares[i] = xIsNext ? "X" : "O";
     setSquares(squares);
     setDisplayPlayer(xIsNext ? "O" : "X");
@@ -39,6 +42,11 @@ const Board = () => {
     if (calculateWinningPattern(squares)) {
       alert(`${squares[i]} is the winner!`);
       setSquares(Array(9).fill(""));
+    }
+
+    if (squares.every((square) => square !== "") && !calculateWinningPattern(squares)) {
+        alert("It's a tie!");
+        setSquares(Array(9).fill(""));
     }
 
   };
