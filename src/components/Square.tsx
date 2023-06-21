@@ -1,7 +1,8 @@
 import React from 'react';
+import './Square.css';
 type SquareProps = {
   handleMove: () => void;
-  squareValue: string;
+  squareValue: string | null;
 };
 
 const Square = ({ handleMove, squareValue }: SquareProps) => {
